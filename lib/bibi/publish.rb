@@ -1,0 +1,1 @@
+require 'bibi/publish/version'

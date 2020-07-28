@@ -7,8 +7,8 @@ require 'bibi/publish/version'
 Gem::Specification.new do |gem|
   gem.name          = "bibi-publish"
   gem.version       = Bibi::Publish::VERSION
-  gem.summary       = %q{TODO: Summary}
-  gem.description   = %q{TODO: Description}
+  gem.summary       = %q{Publishes EPUB files using Bibi}
+  gem.description   = %q{bibi-publish uploads EPUB files to S3 and make them readable via web using Bibi a EPUB reader application.}
   gem.license       = "MIT"
   gem.authors       = ["Kitaiti Makoto"]
   gem.email         = "KitaitiMakoto@gmail.com"

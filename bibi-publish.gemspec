@@ -29,8 +29,15 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_development_dependency 'bundler', '~> 1.10'
-  gem.add_development_dependency 'rake', '~> 10.0'
-  gem.add_development_dependency 'rubygems-tasks', '~> 0.2'
-  gem.add_development_dependency 'yard', '~> 0.8'
+  gem.add_runtime_dependency "archive-zip"
+  gem.add_runtime_dependency "dry-cli"
+  gem.add_runtime_dependency "dry-configurable"
+  gem.add_runtime_dependency "epub-parser"
+  gem.add_runtime_dependency "xdg"
+
+  gem.add_development_dependency 'bundler'
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rubygems-tasks'
+  gem.add_development_dependency "test-unit"
+  gem.add_development_dependency 'yard'
 end

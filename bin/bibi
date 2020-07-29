@@ -12,3 +12,6 @@ if File.directory?(File.join(root,'.git'))
     end
   end
 end
+
+require "bibi/cli/commands/publish"
+Dry::CLI.new(Bibi::CLI::Commands).call

@@ -9,7 +9,7 @@ Gem::Specification.new do |gem|
   gem.version       = Bibi::Publish::VERSION
   gem.summary       = %q{Publishes EPUB files using Bibi}
   gem.description   = %q{bibi-publish uploads EPUB files to S3 and make them readable via web using Bibi a EPUB reader application.}
-  gem.license       = "MIT"
+  gem.license       = "AGPL-3.0"
   gem.authors       = ["Kitaiti Makoto"]
   gem.email         = "KitaitiMakoto@gmail.com"
   gem.homepage      = "https://rubygems.org/gems/bibi-publish"
@@ -30,6 +30,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_runtime_dependency "archive-zip"
+  gem.add_runtime_dependency "aws-sdk-s3"
   gem.add_runtime_dependency "dry-cli"
   gem.add_runtime_dependency "dry-configurable"
   gem.add_runtime_dependency "epub-parser"

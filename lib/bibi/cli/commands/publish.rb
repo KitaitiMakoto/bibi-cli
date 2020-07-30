@@ -19,16 +19,8 @@ module Bibi::CLI::Commands
       "--bibi=s3://mybucket/subdir/bibi path/to/doc.epub"
     ]
 
-    def call(epub:, name: File.basename(epub, ".*"), page:, bibi: nil, bookshelf: nil,  head_end: nil, body_end: nil, **)
-      Bibi::Publish.update_config(
-        {
-          bibi: bibi,
-          bookshelf: bookshelf,
-          page: page,
-          head_end: head_end,
-          body_end: body_end
-        }
-      )
+    def call(epub:, name: File.basename(epub, ".*"), **options)
+      Bibi::Publish.update_config options
       Bibi::Publish.new(epub, name).run
     end
   end

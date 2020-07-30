@@ -1,5 +1,7 @@
 require 'bibi/publish/version'
 require "dry/configurable"
+require "xdg"
+require "yaml"
 require "uri"
 require "epub/parser"
 require "archive/zip"
@@ -18,6 +20,22 @@ class Bibi::Publish
   setting :page, true
   setting :head_end
   setting :body_end
+
+  class << self
+    def update_config(c)
+    %i[bibi bookshelf head_end body_end].each do |name|
+      config[name] = c[name] unless c[name].nil?
+    end
+    config[:page] = c[:page] unless c[:page].nil?
+    end
+  end
+
+  XDG::Config.new.all.uniq.reverse_each do |config_path|
+    path = File.join(config_path, "bibi", "publish.yaml")
+    next unless File.file? path
+    c = YAML.load(File.read(path), symbolize_names: true)
+    update_config(c)
+  end
 
   def initialize(epub_path, name)
     @epub = EPUB::Parser.parse(epub_path)

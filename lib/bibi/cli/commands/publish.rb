@@ -3,11 +3,7 @@ require "bibi/publish"
 
 module Bibi::CLI::Commands
   class Publish < Dry::CLI::Command
-    desc <<EOS
-Publish EPUB file
-
-
-EOS
+    desc "Publish EPUB file"
 
     argument :epub, required: true, desc: "EPUB path"
     argument :name, required: false, desc: "directory name in Bibi bookshelf directory"

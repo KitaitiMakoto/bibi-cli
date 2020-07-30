@@ -41,8 +41,6 @@ class Bibi::Publish
     @epub = EPUB::Parser.parse(epub_path)
     @name = name
 
-    raise "currently, bibi URI is required." unless bibi
-
     $stderr.puts <<EOS
 bibi: #{self.bibi}
 bookshelf: #{self.bookshelf}
@@ -53,6 +51,9 @@ EOS
   end
 
   def run(dry_run: false)
+    raise "bibi or bookshelf URI is required." if bibi.nil? && bookshelf.nil?
+    raise "bibi URI is required when generating HTML" if page? && bibi.nil?
+
     original_dry_run = @dry_run
     @dry_run = dry_run
     upload_contents

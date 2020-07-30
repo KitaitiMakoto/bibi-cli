@@ -6,7 +6,7 @@
 
 ## Description
 
-TODO: Description
+bibi-publish uploads EPUB files to S3 and make them readable via web using Bibi a EPUB reader application.
 
 ## Features
 

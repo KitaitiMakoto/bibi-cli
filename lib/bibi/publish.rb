@@ -52,9 +52,13 @@ body_end: #{self.body_end}
 EOS
   end
 
-  def run
+  def run(dry_run: false)
+    original_dry_run = @dry_run
+    @dry_run = dry_run
     upload_contents
     upload_html if page?
+  ensure
+    @dry_run = original_dry_run
   end
 
   private
@@ -77,6 +81,10 @@ EOS
 
   def page?
     config.page
+  end
+
+  def dry_run?
+    !! @dry_run
   end
 
   def upload_contents
@@ -129,7 +137,7 @@ EOS
       $stderr.puts "Skipping #{object.public_url}"
       return
     end
-    $stderr.puts "Uploading #{object.public_url}"
-    object.put(body: content, content_type: type)
+    $stderr.puts "Uploading#{dry_run? ? " (dry run)" : ""} #{object.public_url}"
+    object.put(body: content, content_type: type) unless dry_run?
   end
 end

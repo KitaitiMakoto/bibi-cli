@@ -20,7 +20,14 @@ module Bibi::CLI::Commands
     ]
 
     def call(epub:, name: File.basename(epub, ".*"), page:, bibi: nil, bookshelf: nil,  head_end: nil, body_end: nil, **)
-      Bibi::Publish.new(epub, name, bibi: bibi, bookshelf: bookshelf, page: page, head_end: head_end, body_end: body_end).run
+      config = Bibi::Publish.config
+      config.bibi ||= bibi
+      config.bookshelf ||= bookshelf
+      config.page = page # `||` is not needed because this is a boolean field
+      config.head_end ||= head_end
+      config.body_end ||= body_end
+
+      Bibi::Publish.new(epub, name).run
     end
   end
 

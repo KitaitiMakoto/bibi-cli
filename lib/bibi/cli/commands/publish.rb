@@ -10,7 +10,7 @@ module Bibi::CLI::Commands
 
     option :bibi, desc: "URI of Bibi directory"
     option :bookshelf, desc: "URI of Bibi bookshelf. Defaults to {bibi}/../bibi-bookshelf"
-    option :page, type: :boolean, default: true, desc: "Generates HTML page"
+    option :page, type: :boolean, default: true, desc: "generate HTML page"
     option :head_end, desc: "path to HTML file to be inserted at the end of <head> in html. Effective when page switch is on"
     option :body_end, desc: "path to HTML file to be inserted at the end of <body> in html. Effective when page switch is on"
     option :dry_run, type: :boolean, default: false, desc: "Shows uploading file but doesn't upload actually"

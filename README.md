@@ -23,6 +23,7 @@ bibi publish a command line tool that uploads EPUB files to S3 and make them rea
 
 * AWS account
 * Environment that is able to upload files to S3 bucket
+* S3 bucket which you can access and is configuread for a static website hosting
 
 ## Install
 

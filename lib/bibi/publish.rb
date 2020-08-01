@@ -22,7 +22,8 @@ class Bibi::Publish
   setting :body_end
   setting(:endpoint, nil) {|value| URI(value) if value}
 
-  def initialize(dry_run: false, **options)
+  def initialize(profile: :default, dry_run: false, **options)
+    @profile = profile
     load_config
     update_config options
     @dry_run = dry_run
@@ -87,7 +88,9 @@ return
       path = File.join(config_path, "bibi", "publish.toml")
       next unless File.file? path
       c = Tomlrb.load_file(path, symbolize_keys: true)
-      update_config(c)
+      next unless c[@profile]
+      $stderr.puts "Config loaded from #{path}"
+      update_config(c[@profile])
     end
   end
 

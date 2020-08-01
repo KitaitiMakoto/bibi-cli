@@ -14,6 +14,7 @@ module Bibi::CLI::Commands
     option :head_end, desc: "path to HTML file to be inserted at the end of <head> in html. Effective when page switch is on"
     option :body_end, desc: "path to HTML file to be inserted at the end of <body> in html. Effective when page switch is on"
     option :endpoint, desc: "S3 endpoint URL. useful when using MinIO and so on"
+    option :profile, default: :default, desc: "configuration profile. Defaults to `default`"
     option :dry_run, type: :boolean, default: false, desc: "Shows uploading file but doesn't upload actually"
 
     example [
@@ -21,6 +22,7 @@ module Bibi::CLI::Commands
     ]
 
     def call(epub:, name: File.basename(epub, ".*"), **options)
+      options[:profile] = options[:profile]&.intern
       Bibi::Publish.new(**options).run(epub, name)
     end
   end

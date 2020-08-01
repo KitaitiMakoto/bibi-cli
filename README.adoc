@@ -3,7 +3,7 @@
 = {doctitle}
 
 * link:https://rubygems.org/gems/bibi-publish[Homepage]
-* link:http://rubydoc.info/gems/bibi-publish/frames[Documentation]
+* link:http://rubydoc.info/gems/bibi-publish[Documentation]
 * mailto:KitaitiMakoto-at-gmail.com[Email]
 
 == Description

@@ -1,7 +1,7 @@
 require 'bibi/publish/version'
 require "dry/configurable"
 require "xdg"
-require "yaml"
+require "tomlrb"
 require "uri"
 require "epub/parser"
 require "archive/zip"
@@ -32,9 +32,9 @@ class Bibi::Publish
   end
 
   XDG::Config.new.all.uniq.reverse_each do |config_path|
-    path = File.join(config_path, "bibi", "publish.yaml")
+    path = File.join(config_path, "bibi", "publish.toml")
     next unless File.file? path
-    c = YAML.load(File.read(path), symbolize_names: true)
+    c = Tomlrb.load_file(path, symbolize_names: true)
     update_config(c)
   end
 

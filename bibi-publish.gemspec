@@ -34,6 +34,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "dry-cli"
   gem.add_runtime_dependency "dry-configurable"
   gem.add_runtime_dependency "epub-parser"
+  gem.add_runtime_dependency "tomlrb"
   gem.add_runtime_dependency "xdg"
 
   gem.add_development_dependency 'bundler'

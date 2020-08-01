@@ -66,7 +66,7 @@ The second argument `page-blanch-book` is used for subdirectory and HTML file na
 
 Pass `--no-page` option to the command.
 
-Note that you read EPUB by visiting Bibi's usual URI `https://s3.your-region.amazonaws.com/subdir/bibi/?book=moby-dick-book`.
+Note that you read EPUB by visiting Bibi's usual URI `https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/?book=moby-dick-book`.
 
 ### Inserting arbitrary fragments to generated HTML
 

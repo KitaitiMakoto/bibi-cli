@@ -22,24 +22,9 @@ class Bibi::Publish
   setting :body_end
   setting(:endpoint, nil) {|value| URI(value) if value}
 
-  class << self
-    def update_config(c)
-      %i[bibi bookshelf head_end body_end endpoint].each do |name|
-        config[name] = c[name] unless c[name].nil?
-      end
-      config[:page] = c[:page] unless c[:page].nil?
-    end
-  end
-
-  XDG::Config.new.all.uniq.reverse_each do |config_path|
-    path = File.join(config_path, "bibi", "publish.toml")
-    next unless File.file? path
-    c = Tomlrb.load_file(path, symbolize_keys: true)
-    update_config(c)
-  end
-
   def initialize(dry_run: false, **options)
-    self.class.update_config options
+    load_config
+    update_config options
     @dry_run = dry_run
 
     $stderr.puts <<EOS
@@ -53,6 +38,9 @@ EOS
   end
 
   def run(epub, name)
+
+return
+
     @epub = EPUB::Parser.parse(epub)
     @name = name
 
@@ -92,6 +80,22 @@ EOS
 
   def dry_run?
     !! @dry_run
+  end
+
+  def load_config
+    XDG::Config.new.all.uniq.reverse_each do |config_path|
+      path = File.join(config_path, "bibi", "publish.toml")
+      next unless File.file? path
+      c = Tomlrb.load_file(path, symbolize_keys: true)
+      update_config(c)
+    end
+  end
+
+  def update_config(c)
+    %i[bibi bookshelf head_end body_end endpoint].each do |name|
+      config[name] = c[name] unless c[name].nil?
+    end
+    config[:page] = c[:page] unless c[:page].nil?
   end
 
   def upload_contents

@@ -21,8 +21,7 @@ module Bibi::CLI::Commands
     ]
 
     def call(epub:, name: File.basename(epub, ".*"), **options)
-      Bibi::Publish.update_config options
-      Bibi::Publish.new(epub, name).run(dry_run: options[:dry_run])
+      Bibi::Publish.new(**options).run(epub, name)
     end
   end
 

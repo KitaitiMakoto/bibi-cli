@@ -38,9 +38,9 @@ class Bibi::Publish
     update_config(c)
   end
 
-  def initialize(epub_path, name)
-    @epub = EPUB::Parser.parse(epub_path)
-    @name = name
+  def initialize(dry_run: false, **options)
+    self.class.update_config options
+    @dry_run = dry_run
 
     $stderr.puts <<EOS
 bibi: #{self.bibi}
@@ -52,7 +52,10 @@ endpoint: #{endpoint}
 EOS
   end
 
-  def run(dry_run: false)
+  def run(epub, name)
+    @epub = EPUB::Parser.parse(epub)
+    @name = name
+
     raise "bibi or bookshelf URI is required." if bibi.nil? && bookshelf.nil?
     raise "bibi URI is required when generating HTML" if page? && bibi.nil?
 
@@ -61,12 +64,8 @@ EOS
       Aws.config.update endpoint: config[:endpoint], force_path_style: true
     end
 
-    original_dry_run = @dry_run
-    @dry_run = dry_run
     upload_contents
     upload_html if page?
-  ensure
-    @dry_run = original_dry_run
   end
 
   private

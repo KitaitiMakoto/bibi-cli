@@ -34,7 +34,7 @@ class Bibi::Publish
   XDG::Config.new.all.uniq.reverse_each do |config_path|
     path = File.join(config_path, "bibi", "publish.toml")
     next unless File.file? path
-    c = Tomlrb.load_file(path, symbolize_names: true)
+    c = Tomlrb.load_file(path, symbolize_keys: true)
     update_config(c)
   end
 

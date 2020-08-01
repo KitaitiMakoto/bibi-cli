@@ -37,6 +37,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency "tomlrb"
   gem.add_runtime_dependency "xdg"
 
+  gem.add_development_dependency "asciidoctor"
   gem.add_development_dependency 'bundler'
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rubygems-tasks'

@@ -39,9 +39,6 @@ EOS
   end
 
   def run(epub, name)
-
-return
-
     @epub = EPUB::Parser.parse(epub)
     @name = name
 

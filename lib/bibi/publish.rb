@@ -23,10 +23,10 @@ class Bibi::Publish
 
   class << self
     def update_config(c)
-    %i[bibi bookshelf head_end body_end].each do |name|
-      config[name] = c[name] unless c[name].nil?
-    end
-    config[:page] = c[:page] unless c[:page].nil?
+      %i[bibi bookshelf head_end body_end].each do |name|
+        config[name] = c[name] unless c[name].nil?
+      end
+      config[:page] = c[:page] unless c[:page].nil?
     end
   end
 

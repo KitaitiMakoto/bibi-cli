@@ -26,6 +26,7 @@ bibi publish a command line tool that uploads EPUB files to S3 and make them rea
 * AWS account
 * Environment that is able to upload files to S3 bucket
 * S3 bucket which you can access and is configuread for a static website hosting
+* AWS CLI and configuration
 
 == Install
 
@@ -142,6 +143,7 @@ Use environment variable `AWS_PROFILE`:
 == See also
 
 * https://github.com/satorumurmur/bibi[Bibi] is an EPUB reader which runs in web browser with beautiful UI.
+* https://aws.amazon.com/cli/[AWS CLI] for install and configuration for AWS profile, which bibi publish also uses
 
 == Copyright
 

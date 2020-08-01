@@ -96,7 +96,34 @@ Now the HTML fragment is inserted into HTML file:
 
 ## Configuration
 
+You can configure bibi publish by the file `~/.config/bibi/publish.toml` in [TOML][] format. This is especially useful for avoiding to specify options such as `--bibi` and `--bookshelf` each time.
 
+Example is here:
+
+~~~ toml
+# `default` table is used by default
+[default]
+bibi = "s3://yourbucket/subdir/bibi"
+bookshelf = "s3://yourbucket/epubs"
+page = true
+~~~
+
+This is equivalent to pass command-line options `--bibi=s3://yourbucket/subdir/bibi`, `--bookshelf=s3://yourbucket/epubs` and `--page`.
+
+If you want to switch set of configuration depending on situation, add another table and specify it by `--profile` option.
+
+~~~ toml
+[production]
+bibi = "s3://your-production-bucket/bibi"
+
+[staging]
+bibi = "s3://your-staging-bucket/bibi"
+
+~~~
+
+    % bibi publish --profile=staging moby-dick.epub
+
+Currently supported keys are `bibi`, `bookshelf`, `page`, `head_end` and `body_end`.
 
 ### AWS profile
 
@@ -115,3 +142,4 @@ Copyright (c) 2020 Kitaiti Makoto
 See {file:COPYING.txt} for details.
 
 [Bibi]: https://github.com/satorumurmur/bibi
+[TOML]: https://toml.io/

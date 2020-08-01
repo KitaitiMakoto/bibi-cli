@@ -85,14 +85,16 @@ Specify path to the the file by `--head-end` option:
 
 Now the HTML fragment is inserted into HTML file:
 
-    % curl -s https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/moby-dick.html | rg -B3 -A3 '</head>'
-                <meta name="generator" content="bibi publish">
-    
-    
-            </head>
-    
-    
-            <body data-bibi-book="moby-dick">
+----
+% curl -s https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/moby-dick.html | rg -B3 -A3 '</head>'
+            <meta name="generator" content="bibi publish">
+
+
+        </head>
+
+
+        <body data-bibi-book="moby-dick">
+----
 
 `--body-end` option inserts HTML fragment in given file at just before `</body>` in HTML.
 

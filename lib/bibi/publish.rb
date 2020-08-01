@@ -20,10 +20,11 @@ class Bibi::Publish
   setting :page, true
   setting :head_end
   setting :body_end
+  setting(:endpoint, nil) {|value| URI(value) if value}
 
   class << self
     def update_config(c)
-      %i[bibi bookshelf head_end body_end].each do |name|
+      %i[bibi bookshelf head_end body_end endpoint].each do |name|
         config[name] = c[name] unless c[name].nil?
       end
       config[:page] = c[:page] unless c[:page].nil?
@@ -47,12 +48,18 @@ bookshelf: #{self.bookshelf}
 page: #{page?}
 head_end: #{self.head_end}
 body_end: #{self.body_end}
+endpoint: #{endpoint}
 EOS
   end
 
   def run(dry_run: false)
     raise "bibi or bookshelf URI is required." if bibi.nil? && bookshelf.nil?
     raise "bibi URI is required when generating HTML" if page? && bibi.nil?
+
+    if config[:endpoint]
+      # `force_path_style` required to upload to MinIO server
+      Aws.config.update endpoint: config[:endpoint], force_path_style: true
+    end
 
     original_dry_run = @dry_run
     @dry_run = dry_run
@@ -68,7 +75,7 @@ EOS
     self.class.config
   end
 
-  [:bibi, :head_end, :body_end].each do |name|
+  [:bibi, :head_end, :body_end, :endpoint].each do |name|
     define_method name do
       config[name]
     end

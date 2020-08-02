@@ -8,12 +8,12 @@
 
 == 説明
 
-bibi publish a command line tool that uploads EPUB files to S3 and make them readable via web using https://github.com/satorumurmur/bibi[Bibi], an EPUB reader application.
+bibi publishはEPUBファイルをS3にアップロードし、link:https://github.com/satorumurmur/bibi[Bibi]というEPUBリーダーアプリケーションで閲覧可能にするコマンドラインツールです。
 
 == 機能
 
-* Uploads files in EPUB document to Bibi's bookshelf directory on Amazon S3
-* Generates HTML file to show given EPUB and uploads to S3
+* EPUBドキュメント内のファイルをAmazon S3上のBibiのbookshelfディレクトリーにアップロード
+* EPUB閲覧用のHTMLファイルを作成してS3にアップロード
 
 == 使用例
 
@@ -23,10 +23,10 @@ bibi publish a command line tool that uploads EPUB files to S3 and make them rea
 
 == 前提条件
 
-* AWS account
-* Environment that is able to upload files to S3 bucket
-* S3 bucket which you can access and is configuread for a static website hosting
-* AWS CLI and configuration
+* AWSアカウント
+* S3バケットにファイルをアップロード可能な環境
+* アクセス可能で静的ウェブサイトホスティングように設定されたS3バケット
+* AWS CLIとその設定
 
 == インストール
 
@@ -36,7 +36,7 @@ bibi publish a command line tool that uploads EPUB files to S3 and make them rea
 
 === 予行
 
-bibi publish supports `--dry-run` option that shows file to upload but doesn't do it actually.
+bibi publishは `--dry-run` オプションをサポートしています。これはアップロード予定のファイルを表示はするが実際にはアップロードしないというオプションです。
 
     % bibi publish --bibi=s3://yourbucket/subdir/bibi path/to/moby-dick.epub moby-dick-book --dry-run
 
@@ -44,32 +44,32 @@ bibi publish supports `--dry-run` option that shows file to upload but doesn't d
 
     % bibi publish --bibi=s3://yourbucket/subdir/bibi path/to/moby-dick.epub
 
-does:
+これは次のことを行います。
 
-* upload files in EPUB file `moby-dick.epub` to `s3://yourbucket/subdir/bibi-bookshelf/moby-dick`
-* upload a HTML file to read the EPUB document using Bibi to `s3://yourbucket/subdir/bibi/moby-dick.html`
+* `moby-dick.epub` というEPUBファイル内のファイルを `s3://yourbucket/subdir/bibi-bookshelf/moby-dick` へアップロード
+* Bibiを使ってこのEPUBドキュメントを読むためのHTMLファイルを `s3://yourbucket/subdir/bibi/moby-dick.html` へアップロード
 
 Note that:
 
-* bookshelf directory `bibi-bookshelf` is automatically determined by bibi publish
-* bookshelf subdirectory name `moby-dick` is automatically determined by bibi publish according to the basename of given EPUB file `moby-dick.epub`
+* `bibi-bookshelf` というbookshelfディレクトリーはbibi publishが自動的に決定する
+* `moby-dick` というbookshelfのサブディレクトリーは、 `moby-dick.epub` という与えられたEPUBファイルからbibi publishが自動的に決定する
 
 === Bibi bookshelf下のディレクトリー名の指定
 
     % bibi publish --bibi=s3://yourbucket/subdir/bibi path/to/moby-dick.epub moby-dick-book
 
-The second argument `page-blanch-book` is used for subdirectory and HTML file name on S3, which means it uses:
+`page-blanch-book` という第二引数はS3上のサブディレクトリーとHTMLファイル名に使われます。つまり以下のようになります。
 
-* `s3://yourbucket/subdir/bibi-bookshelf/moby-dick-book` instead of `s3://yourbucket/subdir/bibi-bookshelf/moby-dick`
-* `s3://yourbucket/subdir/bibi/moby-dick-book.html` instead of `s3://yourbucket/subdir/bibi/moby-dick.html`
+* `s3://yourbucket/subdir/bibi-bookshelf/moby-dick` ではなく `s3://yourbucket/subdir/bibi-bookshelf/moby-dick-book`
+* `s3://yourbucket/subdir/bibi/moby-dick.html` ではなく `s3://yourbucket/subdir/bibi/moby-dick-book.html`
 
 === HTMLを生成しない
 
     % bibi publish --bibi=s3://yourbucket/subdir/bibi --no-page path/to/moby-dick.epub moby-dick-book
 
-Pass `--no-page` option to the command.
+コマンドに `--no-page` オプションを渡してください。
 
-Note that you read EPUB by visiting Bibi's usual URI `https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/?book=moby-dick-book`.
+Bibiの通常のURIである `https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/?book=moby-dick-book` に行くことでEPUBを閲覧することはできます。
 
 === 生成するHTMLへの任意のフラグメントの挿入
 

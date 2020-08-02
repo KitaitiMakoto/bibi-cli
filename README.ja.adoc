@@ -73,18 +73,18 @@ Bibiの通常のURIである `\https://s3.your-region.amazonaws.com/yourbucket/s
 
 === 生成するHTMLへの任意のフラグメントの挿入
 
-bibi publish inserts HTML fragments from given files to at the end of `<head>` and `<body>` by `--head-end` and `--body-end` options respectively.
+bibi publishは `<head>` と `<body>` の終わりに、それぞれ `--head-end` オプションと `--body-end` オプションで指定されたファイルからHTMLフラグメントを挿入します。
 
-Assume we want to insert generator name in head element of Bibi HTML:
+BibiのHTMLのhead要素に生成プログラムの名前を挿入したいとしましょう。
 
     % cat ./generator.html
     <meta name="generator" content="bibi publish">
 
-Specify path to the the file by `--head-end` option:
+`--head-end` オプションでこのファイルへのパスを指定します。
 
     % bibi publish --bibi=s3://yourbucket/subdir/bibi --head-end=./generator.html path/to/moby-dick.epub
 
-Now the HTML fragment is inserted into HTML file:
+これでHTMLファイルにHTMLフラグメントが挿入されます。
 
 ----
 % curl -s https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/moby-dick.html | rg -B3 -A3 '</head>'
@@ -97,13 +97,13 @@ Now the HTML fragment is inserted into HTML file:
         <body data-bibi-book="moby-dick">
 ----
 
-`--body-end` option inserts HTML fragment in given file at just before `</body>` in HTML.
+`--body-end` オプションは指定されたファイルのHTMLフラグメントをHTMLの `</body>` の直前に挿入します。
 
 == 設定
 
-You can configure bibi publish by the file `~/.config/bibi/publish.toml` in https://toml.io/[TOML] format. This is especially useful for avoiding to specify options such as `--bibi` and `--bookshelf` each time.
+`~/.config/bibi/publish.toml` というファイルで、link:https://toml.io/[TOML]形式でbibi publishの設定をすることができます。 `--bibi` や `--bookshelf` といった特定のオプションを毎回指定するのを避けるために特に有用です。
 
-Example is here:
+例えばこうです。
 
 ~/.config/bibi/publish.toml
 [source,toml]
@@ -115,9 +115,9 @@ bookshelf = "s3://yourbucket/epubs"
 page = true
 ----
 
-This is equivalent to pass command-line options `--bibi=s3://yourbucket/subdir/bibi`, `--bookshelf=s3://yourbucket/epubs` and `--page`.
+これはコマンドラインオプションで `--bibi=s3://yourbucket/subdir/bibi` と `--bookshelf=s3://yourbucket/epubs` 、 `--page` を渡すのと同等です。
 
-If you want to switch set of configuration depending on situation, add another table and specify it by `--profile` option.
+状況に応じて設定を切り替えたい場合は、別のテーブルを追加して `--option` オプションでそれを指定します。
 
 ~/.config/bibi/publish.toml
 [source,toml]
@@ -132,11 +132,11 @@ bibi = "s3://your-staging-bucket/bibi"
 
     % bibi publish --profile=staging moby-dick.epub
 
-Currently supported keys are `bibi`, `bookshelf`, `page`, `head_end` and `body_end`.
+現在サポートしているキーは `bibi` 、 `bookshelf` 、 `page` 、 `head_end` 、 `body_end` です。
 
 === AWSプロファイル
 
-Use environment variable `AWS_PROFILE`:
+環境変数 `AWS_PROFILE` を使用してください。
 
     % AWS_PROFILE=publicbibi bibi publish path/to/doc.epub
 
@@ -149,4 +149,4 @@ Use environment variable `AWS_PROFILE`:
 
 Copyright (c) 2020 Kitaiti Makoto
 
-See {file:COPYING.txt} for details.
+詳細は{file:COPYING.txt}をご覧ください。

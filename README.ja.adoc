@@ -49,7 +49,7 @@ bibi publishは `--dry-run` オプションをサポートしています。こ�
 * `moby-dick.epub` というEPUBファイル内のファイルを `s3://yourbucket/subdir/bibi-bookshelf/moby-dick` へアップロード
 * Bibiを使ってこのEPUBドキュメントを読むためのHTMLファイルを `s3://yourbucket/subdir/bibi/moby-dick.html` へアップロード
 
-Note that:
+以下の点に注目してください。
 
 * `bibi-bookshelf` というbookshelfディレクトリーはbibi publishが自動的に決定する
 * `moby-dick` というbookshelfのサブディレクトリーは、 `moby-dick.epub` という与えられたEPUBファイルからbibi publishが自動的に決定する
@@ -142,8 +142,8 @@ bibi = "s3://your-staging-bucket/bibi"
 
 == 参考
 
-* https://github.com/satorumurmur/bibi[Bibi] is an EPUB reader which runs in web browser with beautiful UI.
-* https://aws.amazon.com/cli/[AWS CLI] for install and configuration for AWS profile, which bibi publish also uses
+* https://github.com/satorumurmur/bibi[Bibi] はウェブブラウザーで動作する素晴らしいUIを持ったEPUBリーダーです。
+* https://aws.amazon.com/cli/[AWS CLI] を見てインストールしAWSプロフファイルの設定をしてください。bibi publishはこの設定を使用します。
 
 == 著作権
 

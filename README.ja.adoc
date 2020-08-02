@@ -69,7 +69,7 @@ Note that:
 
 コマンドに `--no-page` オプションを渡してください。
 
-Bibiの通常のURIである `https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/?book=moby-dick-book` に行くことでEPUBを閲覧することはできます。
+Bibiの通常のURIである `\https://s3.your-region.amazonaws.com/yourbucket/subdir/bibi/?book=moby-dick-book` に行くことでEPUBを閲覧することはできます。
 
 === 生成するHTMLへの任意のフラグメントの挿入
 

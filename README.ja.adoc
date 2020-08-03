@@ -8,7 +8,9 @@
 
 == 説明
 
-bibi publishはEPUBファイルをS3にアップロードし、link:https://github.com/satorumurmur/bibi[Bibi]というEPUBリーダーアプリケーションで閲覧可能にするコマンドラインツールです。
+Bibi CLIは https://github.com/satorumurmur/bibi[Bibi] というEPUBリーダーアプリケーションで作業するためのコマンドラインツールです。現在提供しているのは `bibi publish` コマンドのみです。
+
+bibi publishはEPUBファイルをS3にアップロードし、Bibiでというで閲覧可能にするコマンドラインツールです。
 
 == 機能
 

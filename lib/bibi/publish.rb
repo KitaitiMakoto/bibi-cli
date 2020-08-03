@@ -1,4 +1,3 @@
-require 'bibi/publish/version'
 require "dry/configurable"
 require "xdg"
 require "tomlrb"

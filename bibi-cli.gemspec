@@ -2,17 +2,17 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'bibi/publish/version'
+require 'bibi/cli/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "bibi-publish"
-  gem.version       = Bibi::Publish::VERSION
-  gem.summary       = %q{Publishes EPUB files using Bibi}
-  gem.description   = %q{bibi publish uploads EPUB files to S3 and make them readable via web using Bibi a EPUB reader application.}
+  gem.name          = "bibi-cli"
+  gem.version       = Bibi::CLI::VERSION
+  gem.summary       = %q{Command-line tools to work with Bibi}
+  gem.description   = %q{Command-line tools to work with Bibi, incliding bibi publish which uploads EPUB files to S3 and make them readable via web using Bibi a EPUB reader application.}
   gem.license       = "AGPL-3.0"
   gem.authors       = ["Kitaiti Makoto"]
   gem.email         = "KitaitiMakoto@gmail.com"
-  gem.homepage      = "https://rubygems.org/gems/bibi-publish"
+  gem.homepage      = "https://gitlab.com/KitaitiMakoto/bibi-cli"
 
   gem.files         = `git ls-files`.split($/)
 

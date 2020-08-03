@@ -1,14 +1,16 @@
-= bibi publish
+= Bibi CLI
 
 = {doctitle}
 
-* link:https://rubygems.org/gems/bibi-publish[Homepage]
-* link:http://rubydoc.info/gems/bibi-publish[Documentation]
+* link:https://rubygems.org/gems/bibi-cli[Homepage]
+* link:http://rubydoc.info/gems/bibi-cli[Documentation]
 * mailto:KitaitiMakoto-at-gmail.com[Email]
 
 == Description
 
-bibi publish a command line tool that uploads EPUB files to S3 and make them readable via web using https://github.com/satorumurmur/bibi[Bibi], an EPUB reader application.
+Bibi CLI is a command-line tools to work with https://github.com/satorumurmur/bibi[Bibi], an EPUB reader application. Currently, it provides only `bibi publish` command.
+
+bibi publish a command line tool that uploads EPUB files to S3 and make them readable via web using Bibi.
 
 == Features
 

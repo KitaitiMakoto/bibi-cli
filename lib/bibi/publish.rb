@@ -9,7 +9,8 @@ require "digest/md5"
 require "base64"
 require "erb"
 
-class Bibi::Publish
+module Bibi
+class Publish
   extend Dry::Configurable
 
   DEFAULT_MEDIA_TYPE = "application/octet-stream"
@@ -150,4 +151,5 @@ EOS
     $stderr.puts "Uploading#{dry_run? ? " (dry run)" : ""} #{object.public_url}"
     object.put(body: content, content_type: type) unless dry_run?
   end
+end
 end

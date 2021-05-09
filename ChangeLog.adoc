@@ -1,3 +1,7 @@
+=== 0.1.1 / Unreleased
+
+* Declare module Bibi in bibi/publish.rb so that it is abled to be loaded directly
+
 === 0.1.0 / 2020-07-29
 
 * Initial release:

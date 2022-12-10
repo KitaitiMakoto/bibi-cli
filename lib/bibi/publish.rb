@@ -15,12 +15,12 @@ module Bibi
 
     DEFAULT_MEDIA_TYPE = "application/octet-stream"
 
-    setting(:bibi, nil) {|value| URI(value) if value}
-    setting(:bookshelf, nil) {|value| URI(value) if value}
-    setting :page, true
+    setting(:bibi, default: nil) {|value| URI(value) if value}
+    setting(:bookshelf, default: nil) {|value| URI(value) if value}
+    setting :page, default: true
     setting :head_end
     setting :body_end
-    setting(:endpoint, nil) {|value| URI(value) if value}
+    setting(:endpoint, default: nil) {|value| URI(value) if value}
 
     def initialize(profile: :default, dry_run: false, **options)
       @profile = profile

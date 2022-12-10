@@ -1,0 +1,31 @@
+# TypeProf 0.21.3
+
+# Classes
+module Bibi
+  class Publish
+    DEFAULT_MEDIA_TYPE: String
+    @profile: :default
+    @dry_run: false
+    @epub: untyped
+    @name: untyped
+
+    def initialize: (?profile: :default, ?dry_run: false, **untyped) -> void
+    def run: (untyped epub, untyped name) -> nil
+
+    private
+    def config: -> untyped
+    def bibi: -> untyped
+    def head_end: -> untyped
+    def body_end: -> untyped
+    def endpoint: -> untyped
+    def bookshelf: -> nil
+    def page?: -> untyped
+    def dry_run?: -> false
+    def load_config: -> untyped
+    def update_config: (untyped c) -> nil
+    def upload_contents: -> untyped
+    def upload_html: -> nil
+    def html_template: -> String
+    def upload_to_s3: (untyped bucket, String key, String content, String? `type`) -> nil
+  end
+end
